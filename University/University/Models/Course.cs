@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace University.Models
 {
-    public partial class Courses
+    public partial class Course
     {
-        public Courses()
+        public Course()
         {
             Groups = new HashSet<Groups>();
         }

@@ -25,7 +25,7 @@ namespace University
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<UniversityContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("UniverDatabase")));
+                options.UseSqlServer(Configuration.GetConnectionString("UniversityDatabase")));
             
             services.AddControllersWithViews();
         }

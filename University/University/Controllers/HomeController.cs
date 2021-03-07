@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using University.Models;
 
-namespace University.Controllers
+namespace Univer.Controllers
 {
     public class HomeController : Controller
     {
@@ -20,12 +20,7 @@ namespace University.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return RedirectToAction("Index", "Courses");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

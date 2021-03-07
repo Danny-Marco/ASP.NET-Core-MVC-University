@@ -15,7 +15,7 @@ namespace University.Models
         {
         }
 
-        public virtual DbSet<Courses> Courses { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Groups> Groups { get; set; }
         public virtual DbSet<Students> Students { get; set; }
 
@@ -27,7 +27,7 @@ namespace University.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Courses>(entity =>
+            modelBuilder.Entity<Course>(entity =>
             {
                 entity.HasKey(e => e.CourseId)
                     .HasName("PK__COURSES__71CB31DBA598C666");
