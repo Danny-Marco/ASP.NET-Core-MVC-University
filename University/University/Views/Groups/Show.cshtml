@@ -1,0 +1,32 @@
+@model Group
+
+@{
+    ViewBag.Title = "Группы";
+    Layout = "_Layout";
+}
+
+<h2>Группа "@Model.Name"</h2>
+<h3>Студенты группы</h3>
+<div class="table-section">
+    @if (@Model.Students.Count == 0)
+    {
+        <p>В даноой группе нет студентов</p>
+    }
+    else
+    {
+        <table style="width: 100%">
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+            </tr>
+            @foreach (var student in @Model.Students)
+            {
+                <tr>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@Html.ActionLink("Изменить", "Edit", "Students", new {id = student.StudentId})</td>
+                </tr>
+            }
+        </table>
+    }
+</div>

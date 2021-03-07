@@ -19,5 +19,11 @@ namespace University.Controllers
             List<Course> courses = _db.Courses.ToList();
             return View(courses);
         }
+        
+        public IActionResult ShowGroups(int id)
+        {
+            Course course = _db.Courses.Find(id);
+            return View(course.Groups.ToList());
+        } 
     }
 }

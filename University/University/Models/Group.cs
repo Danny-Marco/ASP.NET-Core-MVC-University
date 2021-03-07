@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace University.Models
 {
-    public partial class Groups
+    public partial class Group
     {
-        public Groups()
+        public Group()
         {
-            Students = new HashSet<Students>();
+            Students = new HashSet<Student>();
         }
 
         public int GroupId { get; set; }
@@ -15,6 +15,6 @@ namespace University.Models
         public int CourseId { get; set; }
 
         public virtual Course Course { get; set; }
-        public virtual ICollection<Students> Students { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

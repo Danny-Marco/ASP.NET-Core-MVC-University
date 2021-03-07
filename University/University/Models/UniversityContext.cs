@@ -16,8 +16,8 @@ namespace University.Models
         }
 
         public virtual DbSet<Course> Courses { get; set; }
-        public virtual DbSet<Groups> Groups { get; set; }
-        public virtual DbSet<Students> Students { get; set; }
+        public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -49,7 +49,7 @@ namespace University.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Groups>(entity =>
+            modelBuilder.Entity<Group>(entity =>
             {
                 entity.HasKey(e => e.GroupId)
                     .HasName("PK__GROUPS__3EFEA3DE05441D4A");
@@ -73,7 +73,7 @@ namespace University.Models
                     .HasConstraintName("FK__GROUPS__COURSE_I__267ABA7A");
             });
 
-            modelBuilder.Entity<Students>(entity =>
+            modelBuilder.Entity<Student>(entity =>
             {
                 entity.HasKey(e => e.StudentId)
                     .HasName("PK__STUDENTS__E69FE77BFD66497E");

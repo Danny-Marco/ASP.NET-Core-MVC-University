@@ -22,7 +22,7 @@
             {
                 <tr>
                     <td>
-                        @Html.ActionLink($"{course.Name}", "", "Courses", new { id = @course.CourseId}, null)
+                        @Html.ActionLink($"{course.Name}", "ShowGroups", "Courses", new { id = @course.CourseId}, null)
                     </td>
                     <td>@course.Description</td>
                 </tr>
