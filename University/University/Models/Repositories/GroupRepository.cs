@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace University.Models.Repository
 {
-    public class GroupRepository : IRepository<Group>
+    
+    public class GroupRepository : IGroupRepository
     {
         private UniversityContext _db;
 
@@ -11,6 +13,9 @@ namespace University.Models.Repository
         {
             _db = context;
         }
+
+        // public IQueryable<Group> Groups { get; }
+        public IQueryable<Group> Groups => _db.Groups;
 
         public IEnumerable<Group> GetAll()
         {

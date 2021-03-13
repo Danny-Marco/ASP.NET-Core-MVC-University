@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace University.Models.Repository
 {
-    public class StudentRepository : IRepository<Student>
+    public class StudentRepository : IStudentRepository
     {
         private UniversityContext _db;
 

@@ -1,9 +1,10 @@
 using System;
 using University.Models.Repository;
+using University.Models.UnitsOfWork;
 
 namespace University.Models
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
         private UniversityContext _db = new UniversityContext();
         private CourseRepository _courseRepository;

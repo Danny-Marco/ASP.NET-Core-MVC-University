@@ -2,16 +2,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using University.Models;
+using University.Models.UnitsOfWork;
 
 namespace University.Controllers
 {
     public class StudentsController : Controller
     {
-        readonly UnitOfWork unitOfWork;
+        readonly IUnitOfWork unitOfWork;
 
-        public StudentsController()
+        public StudentsController(IUnitOfWork unit)
         {
-            unitOfWork = new UnitOfWork();
+            unitOfWork = unit;
         }
         
         public IActionResult Index()

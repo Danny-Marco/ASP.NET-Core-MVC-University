@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace University.Models.Repository
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> GetAll();
+        public IEnumerable<T> GetAll();
     }
 }

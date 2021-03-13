@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using University.Models;
+using University.Models.UnitsOfWork;
 
 namespace University
 {
@@ -27,6 +28,7 @@ namespace University
             services.AddDbContext<UniversityContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UniversityDatabase")));
             
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
         }
 
