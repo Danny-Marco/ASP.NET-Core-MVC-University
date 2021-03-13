@@ -1,54 +1,46 @@
-using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using University.Models;
 
 namespace University.Controllers
 {
     public class GroupsController : Controller
     {
-        private UniversityContext _db;
         private Group _group;
-       
-        public GroupsController(UniversityContext db)
+        readonly UnitOfWork unitOfWork;
+
+        public GroupsController()
         {
-            _db = db;
+            unitOfWork = new UnitOfWork();
         }
         
         public IActionResult Index()
         {
-            List<Group> groups = _db.Groups.ToList();
+            var groups = unitOfWork.Groups.GetAll().ToList();
             return View(groups);
         }
         
         public IActionResult Show(int id)
         {
-            _group = _db.Groups.Find(id);
+            _group = unitOfWork.Groups.Get(id);
             return View(_group);
         }
         
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id != null)
-            {
-                Group group = await _db.Groups.FirstOrDefaultAsync(p => p.GroupId == id);
-                if (group != null)
-                    return View(group);
-            }
-
-            return NotFound();
+            _group = unitOfWork.Groups.Get(id);
+            return View(_group);
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> Edit(Group group)
         {
-            Group foundGroup = await _db.Groups.FirstOrDefaultAsync(p => p.GroupId == group.GroupId);
+            var id = group.GroupId;
+            Group foundGroup = unitOfWork.Groups.Get(id);
             foundGroup.Name = group.Name;
-            _db.Groups.Update(foundGroup);
-            await _db.SaveChangesAsync();
+            unitOfWork.Groups.Update(foundGroup);
+            unitOfWork.Save();
             return RedirectToAction("Index");
         }
     }

@@ -10,6 +10,7 @@
     <div class="col-md-6">
         <form asp-action="Edit" asp-controller="Students" method="post">
             @Html.HiddenFor(s => s.StudentId)
+            @Html.HiddenFor(s => s.GroupId)
             <div class="form_row">
                 <label for="">
                     Имя
