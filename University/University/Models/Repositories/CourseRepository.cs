@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace University.Models.Repository
 {
@@ -12,8 +12,7 @@ namespace University.Models.Repository
             _db = context;
         }
 
-        // public IQueryable Courses { get; }
-        public IQueryable Courses => _db.Courses;
+        public IEnumerable<Course> Courses => _db.Courses;
 
         public IEnumerable<Course> GetAll()
         {

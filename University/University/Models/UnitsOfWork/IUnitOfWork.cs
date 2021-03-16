@@ -5,11 +5,9 @@ namespace University.Models.UnitsOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        CourseRepository Courses { get; }
-        GroupRepository Groups { get; }
-        StudentRepository Students { get; }
+        ICourseRepository Courses { get; }
+        IGroupRepository Groups { get; }
+        IStudentRepository Students { get; }
         void Save();
-        void Dispose(bool disposing);
-        void Dispose();
     }
 }

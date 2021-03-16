@@ -7,38 +7,38 @@ namespace University.Models
     public class UnitOfWork : IUnitOfWork
     {
         private UniversityContext _db = new UniversityContext();
-        private CourseRepository _courseRepository;
-        private GroupRepository _groupRepository;
-        private StudentRepository _studentRepository;
+        private ICourseRepository _courseRepository;
+        private IGroupRepository _groupRepository;
+        private IStudentRepository _studentRepository;
         private bool disposed = false;
 
-        public CourseRepository Courses
+        public ICourseRepository Courses
         {
             get
             {
-                if (_courseRepository != null) return _courseRepository;
+                if (_courseRepository != null) return (CourseRepository) _courseRepository;
                 _courseRepository = new CourseRepository(_db);
-                return _courseRepository;
+                return (CourseRepository) _courseRepository;
             }
         }
 
-        public GroupRepository Groups
+        public IGroupRepository Groups
         {
             get
             {
-                if (_groupRepository != null) return _groupRepository;
+                if (_groupRepository != null) return (GroupRepository) _groupRepository;
                 _groupRepository = new GroupRepository(_db);
-                return _groupRepository;
+                return (GroupRepository) _groupRepository;
             }
         }
 
-        public StudentRepository Students
+        public IStudentRepository Students
         {
             get
             {
-                if (_studentRepository != null) return _studentRepository;
+                if (_studentRepository != null) return (StudentRepository) _studentRepository;
                 _studentRepository = new StudentRepository(_db);
-                return _studentRepository;
+                return (StudentRepository) _studentRepository;
             }
         }
 

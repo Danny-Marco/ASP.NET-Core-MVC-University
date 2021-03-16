@@ -28,14 +28,14 @@ namespace University.Controllers
             return View(_group);
         }
         
-        public async Task<IActionResult> Edit(int id)
+        public IActionResult Edit(int id)
         {
             _group = _unitOfWork.Groups.Get(id);
             return View(_group);
         }
         
         [HttpPost]
-        public async Task<IActionResult> Edit(Group group)
+        public IActionResult Edit(Group group)
         {
             var id = group.GroupId;
             Group foundGroup = _unitOfWork.Groups.Get(id);

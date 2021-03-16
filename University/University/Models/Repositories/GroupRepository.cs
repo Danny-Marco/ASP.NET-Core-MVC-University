@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace University.Models.Repository
@@ -14,8 +13,7 @@ namespace University.Models.Repository
             _db = context;
         }
 
-        // public IQueryable<Group> Groups { get; }
-        public IQueryable<Group> Groups => _db.Groups;
+        public IEnumerable<Group> Groups => _db.Groups;
 
         public IEnumerable<Group> GetAll()
         {

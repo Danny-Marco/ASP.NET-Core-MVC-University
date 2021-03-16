@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using University.Models;
 using University.Models.UnitsOfWork;
@@ -21,14 +20,14 @@ namespace University.Controllers
             return View(students);
         }
         
-        public async Task<IActionResult> Edit(int id)
+        public IActionResult Edit(int id)
         {
             Student student = unitOfWork.Students.Get(id);
             return View(student);
         }
         
         [HttpPost]
-        public async Task<IActionResult> Edit(Student student)
+        public IActionResult Edit(Student student)
         {
             var parameter = student.GroupId;
             Student foundStudent = unitOfWork.Students.Get(student.StudentId);

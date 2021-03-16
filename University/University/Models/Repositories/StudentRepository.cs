@@ -12,6 +12,8 @@ namespace University.Models.Repository
             _db = context;
         }
 
+        public IEnumerable<Student> Students => _db.Students;
+
         public IEnumerable<Student> GetAll()
         {
             return _db.Students;
