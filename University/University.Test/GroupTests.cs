@@ -24,7 +24,7 @@ namespace TestProject1
             var result = _controller.Index() as ViewResult;
             var expectedModel = TestsData.Groups.ToList();
             var currentModel = result.Model;
-            Assert.That(currentModel, Is.EqualTo(expectedModel));
+            Assert.AreEqual(currentModel, expectedModel);
         }
         
         [Test]
@@ -33,7 +33,7 @@ namespace TestProject1
             var group = TestsData.Groups.First();
             var groupId = group.GroupId;
             var currentFoundGroup = _unitOfWork.Groups.Get(groupId);
-            Assert.That(currentFoundGroup, Is.EqualTo(group));
+            Assert.AreEqual(currentFoundGroup, group);
         }
     }
 }

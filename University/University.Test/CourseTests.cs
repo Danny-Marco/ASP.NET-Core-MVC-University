@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
@@ -28,7 +27,7 @@ namespace TestProject1
             var result = _controller.Index() as ViewResult;
             var expectedModel = TestsData.Courses.ToList();
             var currentModel = result.Model;
-            Assert.That(currentModel, Is.EqualTo(expectedModel));
+            Assert.AreEqual(currentModel, expectedModel);
         }
         
         [Test]
@@ -45,7 +44,7 @@ namespace TestProject1
             var groups = _course.Groups;
             var result = _controller.ShowGroups(1) as ViewResult;
             var currentModel = result.Model;
-            Assert.That(groups, Is.EquivalentTo((IEnumerable) currentModel));
+            Assert.AreEqual(groups, currentModel);
         }
     }
 }
