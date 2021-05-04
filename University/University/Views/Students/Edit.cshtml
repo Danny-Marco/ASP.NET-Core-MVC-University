@@ -1,0 +1,29 @@
+@model Student
+
+@{
+    ViewBag.Title = "Редактирование";
+    Layout = "_Layout";
+}
+
+<h2>Редактирование данных студента</h2>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" asp-controller="Students" method="post">
+            @Html.HiddenFor(s => s.StudentId)
+            @Html.HiddenFor(s => s.GroupId)
+            <div class="form_row">
+                <label for="">
+                    Имя
+                    <input asp-for="FirstName" type="text" value="@Model.FirstName">
+                </label>
+            </div>
+            <div class="form_row">
+                <label for="">
+                    Фамилия
+                    <input asp-for="LastName" type="text" value="@Model.LastName">
+                </label>
+            </div>
+            <button type="submit"> Изменить </button>
+        </form>
+    </div>
+</div>
